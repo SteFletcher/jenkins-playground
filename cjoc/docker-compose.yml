@@ -1,0 +1,21 @@
+---
+version: '2'
+services:
+  cjoc:
+    image: cloudbees/jenkins-operations-center
+    container_name: cjoc
+    restart: always
+    ports:
+      - 8094:8080
+      - 50000:50000
+    volumes:
+      - ./cjoc/jenkins_home:/var/jenkins_home
+  cjoc-client-master:
+    image: cloudbees/jenkins-enterprise
+    container_name: cjoc-client-master
+    restart: always
+    ports:
+      - 8095:8080
+      - 50001:50000
+    volumes:
+      - ./cm/jenkins_home:/var/jenkins_home
